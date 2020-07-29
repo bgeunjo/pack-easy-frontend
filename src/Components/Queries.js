@@ -1,6 +1,10 @@
 import {gql} from "apollo-boost";
 
-
+export const QUERY = gql`
+  {
+    isLoggedIn @client
+  }
+`;
 export const MY_PROFILE= gql`
     {
         seeMyProfile{
@@ -9,7 +13,7 @@ export const MY_PROFILE= gql`
     }
 `;
 
-export const GET_FEED=gql`
+export const SEE_FEED=gql`
     {
         seeFeed{
             id

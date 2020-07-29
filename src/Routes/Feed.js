@@ -4,7 +4,7 @@ import Helmet from "react-helmet";
 import { useQuery } from "react-apollo-hooks";
 import Loader from "../Components/Loader";
 import Post from "../Components/Post"
-import {GET_FEED} from "../Components/Queries"
+import {SEE_FEED} from "../Components/Queries"
 
 const Wrapper = styled.div`
     display: flex;
@@ -13,9 +13,11 @@ const Wrapper = styled.div`
     min-height: 75vh;
 `;
 
-
+const token = localStorage.getItem("token");
+console.log(token);
 export default ()=> {
-    const {data,loading} =  useQuery(GET_FEED);
+    const {data,loading} =  useQuery(SEE_FEED);
+    console.log(data);
     return  <Wrapper>
                     <Helmet>
                         <title>Feed | Clonegram</title>

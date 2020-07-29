@@ -88,7 +88,7 @@ export default({
                 {action === "confirm" && (
                 <>
                 <Helmet>
-                    <title>Log In | Clonegram</title>
+                    <title>Log In</title>
                 </Helmet>
                 <form onSubmit={onSubmit}>
                     <Input placeholder="비밀값" {...secret} required />

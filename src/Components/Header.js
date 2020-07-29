@@ -63,10 +63,14 @@ const HeaderLink=styled(Link)`
         margin-right: 30px;
     }
 `;
-
+const token = localStorage.getItem("token");
 export default withRouter(({history})=>{
     const search= useInput("");
-    const {data,loading}=useQuery(MY_PROFILE);
+    const {data,loading}=useQuery(MY_PROFILE,{
+        context:{
+            "Authorization": `Bearer ${token}`
+        }
+    });
     const onSearchSubmit= e => {
         e.preventDefault();
         history.push(`/search?term=${search.value}`);

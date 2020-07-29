@@ -1,24 +1,30 @@
-import React, {useState, useEffect} from "react"
+import React, {useState,useEffect} from "react"
 import useInput from "../../Hooks/useInput"
 import AuthPresenter from "./AuthPresenter"
-import {useMutation} from "react-apollo-hooks"
+import {useMutation, useQuery} from "react-apollo-hooks"
 import {LOG_IN, CREATE_ACCOUNT, CONFIRM_SECRET, LOCAL_LOG_IN} from "./AuthQueries"
 import { toast } from 'react-toastify';
+import {QUERY} from "../../Components/Queries";
+
+
+
 
 
 export default() => {
     const [action, setAction] = useState("logIn");
-    const [{isLoggedIn}, setIsLoggedIn] = useState(false);
     const userId = useInput("");
     const username = useInput("");
     const email = useInput("");
     const firstName = useInput("");
     const lastName = useInput("");
     const secret= useInput("");
+//    const [isLoggedIn,setIsLoggedIn] = useState(false);
+//    const data1=useQuery(QUERY);
+//    console.log(data1);
+//    useEffect(()=>{
+//      return setIsLoggedIn(true);
+//    },[]);
 
-    useEffect(()=>{
-        return setIsLoggedIn(true);
-    },[setIsLoggedIn]);
 
 // eslint-disable-next-line
     const [requestSecretMutation,{requestSecretdata}] = useMutation(LOG_IN, {
@@ -43,7 +49,6 @@ const [createAccountMutation,{data}] = useMutation(CREATE_ACCOUNT, {
     });
 // eslint-disable-next-line
     const [localLogInMutation,{logindata}] = useMutation(LOCAL_LOG_IN);
-
     const onSubmit = async e => {
         e.preventDefault();
         if(action==="logIn"){

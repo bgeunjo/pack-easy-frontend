@@ -27,6 +27,7 @@ const LoggedOutRoutes= () => {
 };
 
 const AppRouter = ({isLoggedIn}) => {
+        console.log(localStorage.getItem("token"))
        return <Switch>{isLoggedIn ? <LoggedInRoutes/> : <LoggedOutRoutes/>}</Switch>
 };
 
