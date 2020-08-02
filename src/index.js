@@ -4,7 +4,6 @@ import App from './Components/App';
 import {ApolloProvider} from "react-apollo-hooks";
 import Client from './Apollo/Client';
 
-console.log("hiyo");
 ReactDOM.render(
   <ApolloProvider client={Client}>
     <App />

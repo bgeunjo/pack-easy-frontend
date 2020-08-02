@@ -13,14 +13,18 @@ const Wrapper = styled.div`
     min-height: 75vh;
 `;
 
-const token = localStorage.getItem("token");
-console.log(token);
 export default ()=> {
-    const {data,loading} =  useQuery(SEE_FEED);
-    console.log(data);
+    const context={
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+    };
+    const {data,loading} =  useQuery(SEE_FEED,{
+        context
+    });
     return  <Wrapper>
                     <Helmet>
-                        <title>Feed | Clonegram</title>
+                        <title>Feed </title>
                     </Helmet>
                 {loading && <Loader/>}
                 {!loading && data && data.seeFeed && data.seeFeed.map(post => 

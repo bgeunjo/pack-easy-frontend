@@ -6,7 +6,6 @@ export const defaults = {
     Mutation: {
       logUserIn: async(_, { token }, { cache }) => {
         await localStorage.setItem("token", token);
-        console.log(token);
         await cache.writeData({
           data: {
             isLoggedIn: true
@@ -17,7 +16,7 @@ export const defaults = {
       },
       logUserOut: (_, __, { cache }) => {
         localStorage.removeItem("token");
-        window.location.reload();
+        window.location= "/";
         return null;
       }
     }

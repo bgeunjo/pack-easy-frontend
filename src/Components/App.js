@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React, {useState,useEffect}from "react";
 import styled,{ ThemeProvider} from "styled-components";
 import GlobalStyles from "../Styles/GlobalStyles";
 import Theme from "../Styles/Theme";
@@ -16,17 +16,15 @@ const Wrapper= styled.div`
   width: 100%;
   `;
 export default () => {
-
   const{
     data: {isLoggedIn}
   } = useQuery(QUERY);
-//   const [isLoggedInS,setIsLoggedInS] = useState(false);
-//   let data=useQuery(QUERY);
-//   console.log(data);
-//   useEffect(()=>{
-//    data.isLoggedIn=isLoggedInS;
-//    setIsLoggedInS(true);
-//   },[data.isLoggedIn]);
+  //const [isLoggedInS,setIsLoggedInS] = useState(false);
+  //let data=useQuery(QUERY);
+  //useEffect(()=>{
+  //  data.isLoggedIn=isLoggedInS;
+  //  return setIsLoggedInS(true);
+  //},[data.isLoggedIn,isLoggedInS]);
   return (
     <ThemeProvider theme={Theme}>
       <>

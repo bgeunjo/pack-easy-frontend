@@ -3,13 +3,18 @@ import styled from "styled-components";
 import TextareaAutosize from "react-autosize-textarea";
 import FatText from "../FatText";
 import Avatar from "../Avatar"
-import { FullHeart,EmptyHeart,Comment } from "../Icons";
+import {Link} from "react-router-dom"
+import { FullHeart,EmptyHeart, Comment as CommentIcon} from "../Icons";
 
 const Post = styled.div`
     ${props=>props.theme.whiteBox};
     width: 100%;
     max-width:600px;
     margin-bottom:25px;
+    user-select: none;
+    a {
+        color: inherit;
+    }
 `;
 
 const Header = styled.header`
@@ -91,6 +96,22 @@ const Textarea = styled(TextareaAutosize)`
     }
 `;
 
+const Comments = styled.ul`
+    margin-top : 10px;
+`;
+
+const Comment= styled.li`
+    margin-bottom: 7px;
+    line-height: 18px;
+    span {
+        margin-right: 5px;
+    }
+`;
+
+const Caption = styled.div`
+    marign: 10px 0px;
+`;
+
 
 export default ({
     user: {
@@ -103,27 +124,65 @@ export default ({
     likeCount,
     createdAt,
     newComment,
-    currentItem
+    currentItem,
+    toggleLike,
+    onKeyPress,
+    comments,
+    selfComments,
+    caption
 }) => (
 <Post>
     <Header>
-    <Avatar size="sm" url={avatar}/>
-    <UserColumn>
-        <FatText text={username}/>
-        <Location>{location}</Location>
-    </UserColumn>
+        <Avatar size="sm" url={avatar}/>
+        <UserColumn>
+            <Link to={`/${username}`}>
+                <FatText text={username}/>
+            </Link>
+            <Location>{location}</Location>
+        </UserColumn>
     </Header>
     <Files>
-        {files && files.map((file,index) => <File id={file.id} src={file.url} showing={index===currentItem}/>)}
+        {files && files.map((file,index) => <File key={file.id} src={file.url} showing={index===currentItem}/>)}
     </Files>
     <Meta>
     <Buttons>
-        <Button>{isLiked ? <FullHeart/> : <EmptyHeart/>}</Button>
-        <Button><Comment/></Button>
+        <Button onClick={toggleLike}>
+            {isLiked ? <FullHeart/> : <EmptyHeart/>}
+        </Button>
+        <Button>
+            <CommentIcon/>
+        </Button>
     </Buttons>
-    <FatText text={likeCount === 1 ? "1 like" : `${likeCount} likes`}/>
+    <FatText text={`좋아요 ${likeCount} 개`}/>
+    <Caption>
+        <FatText text={username}/>
+        {caption}
+    </Caption>
+    {
+        comments && (
+            <Comments>
+                {comments.map(comment => (
+                    <Comment key={comment.id}>
+                        <FatText text={comment.user.username}/>
+                        {comment.text}
+                    </Comment>
+                ))}
+                {selfComments.map(comment => (
+                    <Comment key={comment.id}>
+                        <FatText text={comment.user.username}/>
+                        {comment.text}
+                    </Comment>
+                ))}
+            </Comments>
+        )
+    }
     <Timestamp>{createdAt}</Timestamp>
-    <Textarea placeholder={"Add a comment"} {...newComment}/>
+    <Textarea 
+        placeholder={"댓글 달기..."}
+        value = {newComment.value}
+        onChange={newComment.onChange}
+        onKeyPress={onKeyPress}
+    />
     </Meta>
 </Post>
 );

@@ -63,13 +63,15 @@ const HeaderLink=styled(Link)`
         margin-right: 30px;
     }
 `;
-const token = localStorage.getItem("token");
 export default withRouter(({history})=>{
+    const context={
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+    }
     const search= useInput("");
     const {data,loading}=useQuery(MY_PROFILE,{
-        context:{
-            "Authorization": `Bearer ${token}`
-        }
+        context
     });
     const onSearchSubmit= e => {
         e.preventDefault();
@@ -85,7 +87,11 @@ export default withRouter(({history})=>{
                 </HeaderColumn>
                 <HeaderColumn>
                     <form onSubmit={onSearchSubmit}>
-                        <SearchInput {...search} placeholder="Search"/>
+                        <SearchInput 
+                            value={search.value} 
+                            onChange={search.onChange}
+                            placeholder="검색"
+                        />
                     </form>
                 </HeaderColumn>
                 <HeaderColumn>
@@ -96,7 +102,7 @@ export default withRouter(({history})=>{
                         <EmptyHeart/>
                     </HeaderLink>
                         {!loading &&  data && data.seeMyProfile ? (
-                            <HeaderLink to={data.seeMyProfile.username}>
+                            <HeaderLink to={data.seeMyProfile.username} replace>
                                 <User/>
                             </HeaderLink>) : (
                             <HeaderLink to="/#">
