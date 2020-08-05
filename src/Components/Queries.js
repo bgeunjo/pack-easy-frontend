@@ -8,7 +8,12 @@ export const QUERY = gql`
 export const MY_PROFILE= gql`
     {
         seeMyProfile{
+            id
             username
+            email
+            firstName
+            lastName
+            bio
         }
     }
 `;
@@ -121,5 +126,33 @@ export const SEE_USER = gql`
 export const LOG_OUT = gql`
     mutation logUserOut($token: String!){
         logUserOut(token:$token) @client
+    }
+`;
+
+export const EDIT_USER= gql`
+    mutation editUser(
+        $username: String
+        $email: String
+        $avatar: String
+        $firstName: String
+        $lastName: String
+        $bio: String
+    ){
+        editUser(
+            usernamne: $usernamne
+            email: $email
+            avatar: $avatar
+            firstName: $firstName
+            lastName: $lastName
+            bio: $bio
+        ){
+            id
+            username
+            email
+            avatar
+            firstName
+            lastName
+            bio
+        }
     }
 `;

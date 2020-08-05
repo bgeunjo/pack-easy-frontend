@@ -13,7 +13,7 @@ const Wrapper = styled.div`
     min-height: 75vh;
 `;
 
-export default ()=> {
+export default  ()=> {
     const context={
         headers:{
             Authorization: `Bearer ${localStorage.getItem("token")}`

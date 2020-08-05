@@ -15,8 +15,7 @@ export default withRouter(({match: {params: {username}}}) =>{
         variables:{username},
         context
     });
-    // eslint-disable-next-line
-    const [logOut,logOutdata] = useMutation(LOG_OUT, {
+    const [logOut] = useMutation(LOG_OUT, {
         context
     });
     return <ProfilePresenter loading={loading} data={data} logOut={logOut}/>;

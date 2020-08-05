@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {Helmet} from "react-helmet"
 import Loader from "../../Components/Loader";
@@ -7,40 +8,52 @@ import FatText from "../../Components/FatText";
 import FollowButton from "../../Components/FollowButton";
 import SearchedPost from "../../Components/SearchedPost";
 import Button from "../../Components/Button";
+import { Setting } from "../../Components/Icons";
 
 
 const Wrapper = styled.div`
     min-height: 100vh;
+    width:100%;
 `;
 
-
-const Header = styled.header `
+const Settings= styled(Setting)`
+    margin-left: 15px;
+`;
+const Header = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 80;
-    margin: 0 auto;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-shrink:0;
+    width: 100%;
     margin-bottom: 40px;
 `;  
 
 const HeaderColumn =styled.div`
-
+    display: grid;
+    justify-content: center;
+    flex-grow:1;
 `;
+const HeaderInfo = styled.section`
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30px;    
+    flex-grow:2;
+`
 
-const LogOutButton = styled(Button)`
-    background-color: ${props=>props.theme.bgColor};
-`;
-
-//const UsernameRow= styled.div`
-//    display: flex;
-//    align-items: center;
-//`;
-
-
-const Username = styled.span`
-    font-size:28px;
-    line-height:32px;
+const HeaderRow =styled.div`
+    display: flex;
+    align-items: center;
     margin-bottom:20px;
+`
+
+
+const Username = styled.h2`
+    display: block;
+    font-size: 28px;
+    font-weight:300;
+    line-height:32px;
+    text-align:center;
+    
 `;
 
 const Counts = styled.ul`
@@ -69,13 +82,22 @@ const Bio = styled.p`
 
 const Post = styled.div`
     display: grid; 
+    justify-content: space-between;
     grid-template-columns: repeat(4,200px);
     grid-auto-rows: 200px;
     grid-template-rows: 200px; 
 `;
 
-export default ({loading,data,logOut}) => {
+const HeaderButton = styled(Button)`
+    padding: 5px 9px;
+    width: auto;
+    color: black;
+    margin-left:20px;
+    background-color: ${props=>props.theme.bgColor};
+    border: ${props=>props.theme.boxBorder}
+`;
 
+export default ({loading,data,logOut}) => {
     if(loading===true){
         return (
             <Wrapper>
@@ -111,13 +133,20 @@ export default ({loading,data,logOut}) => {
                         <Avatar size="lg" url={avatar}/>
                         {!isSelf && <FollowButton id={id} isFollowing={isFollowing}/>}
                     </HeaderColumn>
-                    <HeaderColumn>
-                        <Username>{username}</Username>
-                        {isSelf ? (
-                            <LogOutButton onClick={logOut} text="로그아웃"/>
-                        ) : (
-                            <FollowButton isFollowing={isFollowing} id={id}/>
-                        )}
+                    <HeaderInfo>
+                        <HeaderRow>
+                            <Username>{username}</Username>
+                            {isSelf ? (
+                                <>
+                                <HeaderButton  onClick={logOut} text="로그아웃"/>
+                                <Link to="/edit">
+                                    <Settings/>
+                                </Link>
+                                </>
+                            ) : (
+                                <FollowButton isFollowing={isFollowing} id={id}/>
+                            )}
+                        </HeaderRow>
                         <Counts>
                             <Count>게시물<CountText text={String(postCount)}/></Count>
                             <Count>팔로워<CountText text={String(followersCount)}/></Count>
@@ -125,7 +154,7 @@ export default ({loading,data,logOut}) => {
                         </Counts>
                         <FullName text={fullName}/>
                         <Bio>{" "}{bio}</Bio>
-                    </HeaderColumn>
+                    </HeaderInfo>
                 </Header>
                 <Post>
                     {posts && posts.map(post => (

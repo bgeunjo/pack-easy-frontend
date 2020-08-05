@@ -22,11 +22,11 @@ export default() => {
 
 
 // eslint-disable-next-line
-    const [requestSecretMutation,{requestSecretdata}] = useMutation(LOG_IN, {
+    const [requestSecretMutation] = useMutation(LOG_IN, {
         variables: { email: email.value }
     });
 // eslint-disable-next-line   
-const [createAccountMutation,{data}] = useMutation(CREATE_ACCOUNT, {
+    const [createAccountMutation] = useMutation(CREATE_ACCOUNT, {
         variables: {
             email: email.value,
             username: username.value,

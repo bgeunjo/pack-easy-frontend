@@ -32,14 +32,12 @@ const PostContainer= ({
         context: Context
         }
     );
-    // eslint-disable-next-line
-    const [toggleLikeMutation, something] = useMutation(TOGGLE_LIKE, {
+    const [toggleLikeMutation] = useMutation(TOGGLE_LIKE, {
         variables: {postId: id},
         context: Context
         }
     );
-    // eslint-disable-next-line
-    const [addCommentMutation,something2] = useMutation(ADD_COMMENT,{
+    const [addCommentMutation] = useMutation(ADD_COMMENT,{
         variables:{
             postId: id,
             text: comment.value
