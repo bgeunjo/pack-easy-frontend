@@ -5,7 +5,7 @@ import { useMutation, useQuery } from "react-apollo-hooks";
 import {EDIT_USER, MY_PROFILE} from "../../Components/Queries"
 import { withRouter } from "react-router-dom";
 
-export default withRouter(props => {
+export default withRouter((props) => {
     console.log(props);
 //    const context={
 //        headers:{
