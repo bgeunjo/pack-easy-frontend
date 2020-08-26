@@ -6,8 +6,10 @@ import {useMutation} from "react-apollo-hooks"
 import {EDIT_USER} from "../../Components/Queries"
 import { toast } from 'react-toastify';
 
-export default withRouter(props) => 
+export default withRouter((props) => {
     console.log(props);
+    return null;
+})
 //    const username = useInput("");
 //    const email = useInput("");
 //    const firstName = useInput("");
@@ -96,4 +98,3 @@ export default withRouter(props) =>
 //        secret={secret}
 //        />
 //    )
-;
