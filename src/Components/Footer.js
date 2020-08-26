@@ -10,19 +10,18 @@ const Footer = styled.footer`
     font-size:12px;
 `;
 
-const List = styled.ul`
-    display: flex;
-`;
-const ListItem = styled.li`
-    &:not(:last-child){
-        margin-right: 16px;
-    }
-`;
-
-const Link = styled.a`
-    color: ${props=> props.theme.darkBlueColor};
-    cursor: pointer;
-`;
+//const List = styled.ul`
+//    display: flex;
+//`;
+//const ListItem = styled.li`
+//    &:not(:last-child){
+//        margin-right: 16px;
+//    }
+//`;
+//const Link = styled.a`
+//    color: ${props=> props.theme.darkBlueColor};
+//    cursor: pointer;
+//`;
 
 const Copyright = styled.span`
     color: ${props=> props.theme.darkGreyColor};

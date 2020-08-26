@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import TextareaAutosize from "react-autosize-textarea";
 import FatText from "../FatText";
-import Avatar from "../Avatar"
 import {Link} from "react-router-dom"
 import { FullHeart,EmptyHeart, Comment as CommentIcon} from "../Icons";
 
@@ -115,8 +114,7 @@ const Caption = styled.div`
 
 export default ({
     user: {
-        username,
-        avatar
+        username
     },
     location,
     files,
@@ -133,7 +131,6 @@ export default ({
 }) => (
 <Post>
     <Header>
-        <Avatar size="sm" url={avatar}/>
         <UserColumn>
             <Link to={`/${username}`}>
                 <FatText text={username}/>

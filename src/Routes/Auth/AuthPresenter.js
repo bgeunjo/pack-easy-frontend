@@ -63,7 +63,7 @@ export default({
                 {action === "logIn" && (
                     <>
                     <Helmet>
-                        <title>Log In</title>
+                        <title>CANTBEGOSU</title>
                     </Helmet>
                     <form onSubmit={onSubmit}>
                         <Input placeholder={"전화번호, 사용자 이름 또는 이메일"} {...email} />
@@ -74,7 +74,7 @@ export default({
                 {action === "signUp" && (
                     <>
                     <Helmet>
-                        <title>Sign Up</title>
+                        <title>CANTBEGOSU</title>
                     </Helmet>
                     <form onSubmit={onSubmit}>
                         <Input placeholder={"휴대폰 번호 또는 이메일 주소"} {...email} type="email" />
@@ -88,7 +88,7 @@ export default({
                 {action === "confirm" && (
                 <>
                 <Helmet>
-                    <title>Log In</title>
+                    <title>CANTBEGOSU</title>
                 </Helmet>
                 <form onSubmit={onSubmit}>
                     <Input placeholder="비밀값" {...secret} required />

@@ -106,6 +106,7 @@ export const SEE_USER = gql`
             isFollowing
             isSelf
             bio
+            email
             followingCount
             followersCount
             postCount
@@ -131,22 +132,16 @@ export const EDIT_USER= gql`
     mutation editUser(
         $username: String
         $email: String
-        $firstName: String
-        $lastName: String
         $bio: String
     ){
         editUser(
-            usernamne: $usernamne
+            username: $username
             email: $email
-            firstName: $firstName
-            lastName: $lastName
             bio: $bio
         ){
             id
             username
             email
-            firstName
-            lastName
             bio
         }
     }

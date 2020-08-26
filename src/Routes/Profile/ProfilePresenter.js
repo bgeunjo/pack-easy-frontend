@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {Helmet} from "react-helmet"
 import Loader from "../../Components/Loader";
-import Avatar from "../../Components/Avatar";
 import FatText from "../../Components/FatText";
 import FollowButton from "../../Components/FollowButton";
 import SearchedPost from "../../Components/SearchedPost";
@@ -109,7 +108,6 @@ export default ({loading,data,logOut}) => {
         const {
             seeUser: {
                 id,
-                avatar,
                 username,
                 fullName,
                 isFollowing,
@@ -138,7 +136,7 @@ export default ({loading,data,logOut}) => {
                             {isSelf ? (
                                 <>
                                 <HeaderButton  onClick={logOut} text="로그아웃"/>
-                                <Link to={`${username}/edit`}>
+                                <Link to="/accounts/edit">
                                     <Settings/>
                                 </Link>
                                 </>

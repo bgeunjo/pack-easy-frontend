@@ -24,7 +24,7 @@ export default  ()=> {
     });
     return  <Wrapper>
                     <Helmet>
-                        <title>Feed </title>
+                        <title>CANTBEGOSU</title>
                     </Helmet>
                 {loading && <Loader/>}
                 {!loading && data && data.seeFeed && data.seeFeed.map(post => 

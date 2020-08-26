@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Helmet from "react-helmet";
+import Loader from "../../Components/Loader";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button"
 
@@ -48,70 +49,37 @@ const Form = styled(Box)`
     }
 `;
 export default({
-    action,
-    userId,
+    loading,
+    data,
     username,
     email,
-    firstName,
-    lastName,
-    setAction,
-    onSubmit,
-    secret
-}) =>  (
+    bio,
+    onSubmit
+}) =>  {
+    if(loading===true){
+        return (
+            <Wrapper>
+                <Loader/>
+            </Wrapper>
+        );
+    }
+    else if (!loading && data && data.seeMyProfile) {
+        return (
         <Wrapper>
             <Form>
-                {action === "logIn" && (
-                    <>
-                    <Helmet>
-                        <title>Log In</title>
-                    </Helmet>
-                    <form onSubmit={onSubmit}>
-                        <Input placeholder={"전화번호, 사용자 이름 또는 이메일"} {...email} />
-                        <Button text={"로그인"} />
-                    </form>
-                    </>
-                )} 
-                {action === "signUp" && (
-                    <>
-                    <Helmet>
-                        <title>Sign Up</title>
-                    </Helmet>
-                    <form onSubmit={onSubmit}>
-                        <Input placeholder={"휴대폰 번호 또는 이메일 주소"} {...email} type="email" />
-                        <Input placeholder={"이름"} {...firstName} />
-                        <Input placeholder={"성"} {...lastName} />
-                        <Input placeholder={"사용자 이름"} {...username} />
-                        <Button text={"가입"} />
-                    </form>
-                    </>
-                )}
-                {action === "confirm" && (
                 <>
-                <Helmet>
-                    <title>Log In</title>
-                </Helmet>
-                <form onSubmit={onSubmit}>
-                    <Input placeholder="비밀값" {...secret} required />
-                    <Button text={"확인"} />
-                </form>
+                    <Helmet>
+                        <title>CANTBEGOSU</title>
+                    </Helmet>
+                    <form onSubmit={onSubmit}>
+                        <Input  placeholder={data.seeMyProfile.email} {...email}  type="email" />
+                        <Input  placeholder={data.seeMyProfile.username} {...username} />
+                        <Input  placeholder={data.seeMyProfile.bio} {...bio} />
+                        <Button text={"수정"} />
+                    </form>
                 </>
-                )}
             </Form>
-
-            {action !== "confirm" && (
-                <StateChanger>
-                    {action ==="logIn" ? (
-                        <>
-                            계정이 없으신가요?{" "}
-                            <Link onClick={()=> setAction("signUp")}>가입하기</Link>
-                        </>
-                    ) : (
-                        <>
-                            계정이 있으신가요?{" "}
-                            <Link onClick={()=> setAction("logIn")}>로그인</Link>
-                        </>
-                    )}
-                </StateChanger>
-            )}
         </Wrapper>
-    );
+        );
+    }
+};

@@ -12,9 +12,9 @@ const LoggedInRoutes = () => {
     return (
         <Switch>
             <Route path="/search" component={Search}/>
-            <Route path="/:username" component={Profile}/>
             <Route path="/explore" component={Explore}/>
-            <Route path="/:username/edit" component={EditProfile}/>
+            <Route path="/accounts/edit" component={EditProfile}/>
+            <Route path="/:username" component={Profile}/>
             <Route path="/" component={Feed}/>
             <Redirect from="*" to="/"/>
         </Switch>

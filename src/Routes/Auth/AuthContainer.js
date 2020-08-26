@@ -13,12 +13,6 @@ export default() => {
     const firstName = useInput("");
     const lastName = useInput("");
     const secret= useInput("");
-//    const [isLoggedIn,setIsLoggedIn] = useState(false);
-//    const data1=useQuery(QUERY);
-//    console.log(data1);
-//    useEffect(()=>{
-//      return setIsLoggedIn(true);
-//    },[]);
 
 
 // eslint-disable-next-line

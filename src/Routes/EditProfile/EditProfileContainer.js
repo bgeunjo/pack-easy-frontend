@@ -1,95 +1,67 @@
 import React, {useState} from "react"
+import {useQuery, useMutation} from "react-apollo-hooks";
+import { MY_PROFILE,EDIT_USER } from "../../Components/Queries";
+import EditProfilePresenter from "./EditProfilePresenter"
 import { withRouter } from "react-router-dom";
+import useInput from "../../Hooks/useInput"
+import { toast } from 'react-toastify';
 
-export default withRouter((props) => {
-    console.log(props);
-    return null;
+export default withRouter(({history}) => {
+    const context={
+        headers:{
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+    };
+    //const [dataS, setData] = useState({
+    //    seeMyProfile:{
+    //        username: "bbang",
+    //        email: "airmancho@korea.1.3",
+    //        bio: "hello"
+    //    }
+    //});
+    const {data,loading} = useQuery(MY_PROFILE, {
+        context
+    });
+    const username2 = useInput("");
+    const email = useInput("");
+    const bio = useInput("");
+    const [editProfileMutation] = useMutation(EDIT_USER, {
+        variables: {
+            email: email.value,
+            username: username2.value,
+            bio: bio.value
+        },
+        context
+    });
+    const onSubmit = async e => {
+        e.preventDefault();
+        if(email.value !== "" &&
+            username2.value !== ""
+            ){
+                try{
+                    const {data:{editProfile}} = await editProfileMutation();
+                    if(data.seeMyProfile===undefined){
+                        toast.error(e.message)
+                    }else{
+                        toast.success("Successfully edit profile!");
+                        history.push(`/${username2.value}`)
+                    }
+                }catch(e){
+                    toast.error(e.message);
+                }
+            }else{
+                toast.error("All field are required.");
+            }
+        };
+        
+    return (
+        <EditProfilePresenter
+        loading={loading}
+        data={data} 
+        username={username2} 
+        email={email}
+        bio={bio}
+        onSubmit={onSubmit}
+        />
+    );
 })
-//    const username = useInput("");
-//    const email = useInput("");
-//    const firstName = useInput("");
-//    const lastName = useInput("");
-//    const bio = useInput("");
-//
-//    const [editProfileMutation] = useMutation(EDIT_USER, {
-//        variables: {
-//            email: email.value,
-//            username: username.value,
-//            firstName: firstName.value,
-//            lastName: lastName.value
-//        }
-//    });
-//   
-//    const onSubmit = async e => {
-//        e.preventDefault();
-//        if(action==="logIn"){
-//            if(email.value !==""){
-//                try{
-//                    const {data:{requestSecret}}= await requestSecretMutation();
-//                    /* mutation이 발생할 때 실행할 함수 . requestSecret이 false이면 에러 발생*/
-//                        if (!requestSecret) {
-//                            toast.error("You don't have an account yet, create one.");
-//                            setTimeout(() => setAction("signUp"), 2000);
-//                        }else{
-//                            toast.success("Check your email for your login secret");
-//                            setAction("confirm");
-//                        }
-//                }catch(e){
-//                    toast.error(e.message);
-//                }
-//            } else{
-//                toast.error("Email is required ");
-//            }
-//        }
-//        else if (action === "signUp") {
-//            if(email.value !== "" &&
-//                username.value !== "" &&
-//                firstName.value !== "" &&
-//                lastName.value !== ""){
-//                    try{
-//                        const {data:{createAccount}} = await createAccountMutation();
-//                        if(!createAccount){
-//                            toast.error(e.message)
-//                        }else{
-//                            toast.success("Account created! Log in now!");
-//                            setTimeout(()=> setAction("logIn"),3000);
-//                        }
-//                    }catch(e){
-//                        toast.error(e.message);
-//                    }
-//                }else{
-//                    toast.error("All field are required.");
-//                }
-//        }
-//        else if (action === "confirm"){
-//            if(secret.value !== ""){
-//                try {
-//                    const {data: {
-//                        confirmSecret: token
-//                    }}= await confirmSecretMutation();
-//                    if (token !== "" && token !== undefined ){
-//                        await localLogInMutation({
-//                            variables:{token}
-//                        });
-//                    } else{
-//                        throw Error();
-//                    }
-//                } catch (e) {
-//                    toast.error("Can't confirm secret, check again.");
-//                }
-//            }
-//        }
-//    };
-//    return (
-//        <AuthPresenter 
-//        setAction={setAction} 
-//        action={action}
-//        userId={userId} 
-//        username={username} 
-//        email={email}
-//        firstName={firstName}
-//        lastName={lastName}
-//        onSubmit={onSubmit}
-//        secret={secret}
-//        />
-//    )

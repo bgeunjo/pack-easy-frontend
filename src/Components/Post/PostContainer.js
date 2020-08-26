@@ -55,9 +55,9 @@ const PostContainer= ({
         }
     },[currentItem,totalFiles]);
 
-    useEffect(()=> {
-        slide()
-    },[slide]);
+    //useEffect(()=> {
+    //    slide()
+    //},[slide]);
 
     const toggleLike = async () => {
         if(isLikedS === true){
