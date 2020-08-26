@@ -78,7 +78,6 @@ export const SEARCH = gql`
         }
         searchByUser(term:$term){
             id
-            avatar
             username
             isFollowing
             isSelf
@@ -102,7 +101,6 @@ export const SEE_USER = gql`
     query seeUser($username: String!){
         seeUser(username:$username){
             id
-            avatar
             username
             fullName
             isFollowing
@@ -133,7 +131,6 @@ export const EDIT_USER= gql`
     mutation editUser(
         $username: String
         $email: String
-        $avatar: String
         $firstName: String
         $lastName: String
         $bio: String
@@ -141,7 +138,6 @@ export const EDIT_USER= gql`
         editUser(
             usernamne: $usernamne
             email: $email
-            avatar: $avatar
             firstName: $firstName
             lastName: $lastName
             bio: $bio
@@ -149,7 +145,6 @@ export const EDIT_USER= gql`
             id
             username
             email
-            avatar
             firstName
             lastName
             bio

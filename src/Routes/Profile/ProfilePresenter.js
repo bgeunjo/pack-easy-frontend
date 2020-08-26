@@ -130,7 +130,6 @@ export default ({loading,data,logOut}) => {
             </Helmet>
                 <Header>
                     <HeaderColumn>
-                        <Avatar size="lg" url={avatar}/>
                         {!isSelf && <FollowButton id={id} isFollowing={isFollowing}/>}
                     </HeaderColumn>
                     <HeaderInfo>
@@ -139,7 +138,7 @@ export default ({loading,data,logOut}) => {
                             {isSelf ? (
                                 <>
                                 <HeaderButton  onClick={logOut} text="로그아웃"/>
-                                <Link to="/edit">
+                                <Link to={`${username}/edit`}>
                                     <Settings/>
                                 </Link>
                                 </>
