@@ -2,7 +2,7 @@ import React from "react";
 import styled,{ ThemeProvider} from "styled-components";
 import GlobalStyles from "../Styles/GlobalStyles";
 import Theme from "../Styles/Theme";
-import {HashRouter as Router} from "react-router-dom";
+import {BrowerRouter as Router} from "react-router-dom";
 import Routes from "./Routes"
 import { useQuery } from "react-apollo-hooks";
 import { ToastContainer, toast } from 'react-toastify';
