@@ -95,12 +95,6 @@ export default withRouter(({history})=>{
                     </form>
                 </HeaderColumn>
                 <HeaderColumn>
-                    <HeaderLink to="/explore">
-                        <Compass/>
-                    </HeaderLink>
-                    <HeaderLink to="/notifications">
-                        <EmptyHeart/>
-                    </HeaderLink>
                         {!loading &&  data && data.seeMyProfile ? (
                             <HeaderLink to={data.seeMyProfile.username} replace>
                                 <User/>
