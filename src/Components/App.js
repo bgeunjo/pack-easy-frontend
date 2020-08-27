@@ -2,7 +2,7 @@ import React from "react";
 import styled,{ ThemeProvider} from "styled-components";
 import GlobalStyles from "../Styles/GlobalStyles";
 import Theme from "../Styles/Theme";
-import {BrowerRouter as Router} from "react-router-dom";
+import {BrowerRouter} from "react-router-dom";
 import Routes from "./Routes"
 import { useQuery } from "react-apollo-hooks";
 import { ToastContainer, toast } from 'react-toastify';
@@ -29,7 +29,7 @@ export default () => {
     <ThemeProvider theme={Theme}>
       <>
         <GlobalStyles />
-        <Router>
+        <BrowerRouter>
           <>
             {isLoggedIn && <Header/>}
             <Wrapper>
@@ -37,7 +37,7 @@ export default () => {
               <Footer/>
             </Wrapper>
           </>
-        </Router>
+        </BrowerRouter>
       <ToastContainer position={toast.POSITION.BOTTOM_LEFT}/>
       </>
     </ThemeProvider>
