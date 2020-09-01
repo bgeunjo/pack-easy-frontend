@@ -22,8 +22,8 @@ export const SEE_FEED=gql`
     {
         seeFeed{
             id
-            location
-            caption
+            title
+            content
             user{
                 id
                 username
@@ -143,6 +143,33 @@ export const EDIT_USER= gql`
             username
             email
             bio
+        }
+    }
+`;
+
+export const SEE_FULL_POST= gql`
+    query seeFullPost($id: String!){
+        seeFullPost(id:$id){
+            id
+            title
+            files{
+                url
+            }
+            content
+            user{
+                id
+                username
+            }
+            comments{
+                id
+                user{
+                    id
+                    username
+                }
+                text
+            }
+            createdAt
+            updatedAt
         }
     }
 `;

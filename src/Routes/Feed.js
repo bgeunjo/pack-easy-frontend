@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Helmet from "react-helmet";
 import { useQuery } from "react-apollo-hooks";
 import Loader from "../Components/Loader";
-import Post from "../Components/Post"
+import PostList from "../Components/PostList"
 import {SEE_FEED} from "../Components/Queries"
 
 const Wrapper = styled.div`
@@ -28,7 +28,7 @@ export default  ()=> {
                     </Helmet>
                 {loading && <Loader/>}
                 {!loading && data && data.seeFeed && data.seeFeed.map(post => 
-                    <Post 
+                    <PostList 
                         key={post.id}
                         id={post.id} 
                         user={post.user} 
@@ -37,8 +37,8 @@ export default  ()=> {
                         isLiked={post.isLiked}
                         comments={post.comments}
                         createdAt={post.createdAt}
-                        location={post.location}
-                        caption={post.caption}
+                        title={post.title}
+                        content={post.content}
                         />)}
             </Wrapper>
 }

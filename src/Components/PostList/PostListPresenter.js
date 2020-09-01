@@ -3,12 +3,12 @@ import styled from "styled-components";
 import TextareaAutosize from "react-autosize-textarea";
 import FatText from "../FatText";
 import {Link} from "react-router-dom"
-import { FullHeart,EmptyHeart, Comment as CommentIcon, Calendar} from "../Icons";
+import { FullHeart,EmptyHeart, Comment as CommentIcon, Calendar as CalendarIcon, FullUser as FullUserIcon} from "../Icons";
 
 const Post = styled.div`
     ${props=>props.theme.whiteBox};
     width: 100%;
-    max-width: ${props.theme.maxWidth};
+    max-width: ${props=>props.theme.maxWidth};
     margin-bottom:25px;
     user-select: none;
     a {
@@ -16,16 +16,29 @@ const Post = styled.div`
     }
 `;
 
-const Header = styled.header`
-    padding:15px;
-    display: flex;
-    align-items: center;
+const FullUser=styled(FullUserIcon)`
+    margin:0 5px;
 `;
 
+const Calendar=styled(CalendarIcon)`
+    margin: 0 5px;
+`;
+const Header = styled.header`
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    padding-right:15px;
+    padding-left:15px;
+    padding-top:15px;
+    display: flex;
+`;
+const Title = styled.div`
+    font-size: 30px;
+    padding: 3px 0;
+`;
 const UserColumn = styled.div`
     margin-left:10px;
-
-
 `;
 
 const Location = styled.span`
@@ -61,7 +74,8 @@ const Button = styled.span`
 `;
 
 const Meta = styled.div`
-    padding:15px;
+    padding-left:15px;
+    padding-bottom:15px;
 `;
 
 const Buttons = styled.div `
@@ -76,9 +90,7 @@ const Buttons = styled.div `
 
 const Timestamp = styled.span`
     font-weight: 300;
-    text-transform: uppercase;
     opacity: 0.5;
-    display: block;
     font-weight: 12px;
     margin: 10px 0px;
     padding-bottom: 10px;
@@ -107,16 +119,17 @@ const Comment= styled.li`
     }
 `;
 
-const Caption = styled.div`
+const Content = styled.div`
     marign: 10px 0px;
+    font-size: 20px;
 `;
 
 
 export default ({
+    id,
     user: {
         username
     },
-    location,
     files,
     isLiked,
     likeCount,
@@ -127,34 +140,39 @@ export default ({
     onKeyPress,
     comments,
     selfComments,
-    caption
+    title,
+    content
 }) => (
 <Post>
-    <Header>
-        <UserColumn>
-            <Link to={`/${username}`}>
+    <Link to={"/post/"+id}>
+        <Header>
+            <Title>
+                <FatText text={title}/>
+            </Title>
+            <Timestamp>
+                <Calendar/>
+                <FatText text={createdAt.slice(0,10)+" /"}/>
+                <FullUser/>
                 <FatText text={username}/>
-            </Link>
-            <Location>{location}</Location>
-        </UserColumn>
-    </Header>
-    <Files>
+            </Timestamp>
+        </Header>
+    </Link>
+    {/*<Files>
         {files && files.map((file,index) => <File key={file.id} src={file.url} showing={index===currentItem}/>)}
-    </Files>
+    </Files>*/}
     <Meta>
-    <Buttons>
+    <Content>
+        {content}
+    </Content>
+    {/*<Buttons>
         <Button onClick={toggleLike}>
             {isLiked ? <FullHeart/> : <EmptyHeart/>}
         </Button>
         <Button>
             <CommentIcon/>
-        </Button>
+    </Button>
     </Buttons>
     <FatText text={`좋아요 ${likeCount} 개`}/>
-    <Caption>
-        <FatText text={username}/>
-        {caption}
-    </Caption>
     {
         comments && (
             <Comments>
@@ -173,16 +191,12 @@ export default ({
             </Comments>
         )
     }
-    <Timestamp>
-        <Calendar/>
-        {createdAt}
-        </Timestamp>
     <Textarea 
         placeholder={"댓글 달기..."}
         value = {newComment.value}
         onChange={newComment.onChange}
         onKeyPress={onKeyPress}
-    />
+/>*/}
     </Meta>
 </Post>
 );

@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useCallback} from "react";
 import PropTypes from "prop-types";
 import useInput from "../../Hooks/useInput";
-import PostPresenter from "./PostPresenter";
+import PostListPresenter from "./PostListPresenter";
 import { useMutation, useQuery } from "react-apollo-hooks";
 import { TOGGLE_LIKE, ADD_COMMENT, MY_PROFILE } from "../Queries";
 import {toast} from "react-toastify";
@@ -14,8 +14,8 @@ const PostContainer= ({
     isLiked,
     comments,
     createdAt,
-    caption,
-    location
+    title,
+    content
 }) => {
     const Context= {
         headers: {
@@ -87,8 +87,8 @@ const PostContainer= ({
                 }
         }
     };
-
-    return <PostPresenter 
+    return <PostListPresenter
+                id={id}
                 user={user}
                 files={files}
                 likeCount={likeCountS}
@@ -98,12 +98,12 @@ const PostContainer= ({
                 newComment={comment}
                 setIsLiked={setIsLiked}
                 setLikeCount={setLikeCount}
-                caption={caption}
-                location={location}
                 currentItem={currentItem}
                 toggleLike={toggleLike}
                 onKeyPress={onKeyPress}
                 selfComments={selfComments}
+                content={content}
+                title={title}
                 />;
 
 }
@@ -120,20 +120,8 @@ PostContainer.propTypes= {
         url: PropTypes.string.isRequired
      })
     ).isRequired,
-    likeCount: PropTypes.number.isRequired,
-    isLiked: PropTypes.bool.isRequired,
-    comments: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        text: PropTypes.string.isRequired,
-        user: PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            username: PropTypes.string.isRequired
-        }).isRequired
-     })
-    ).isRequired,
     createdAt: PropTypes.string.isRequired,
-    caption: PropTypes.string,
-    location: PropTypes.string.isRequired
+    caption: PropTypes.string
 };
 
 export default PostContainer;

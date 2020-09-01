@@ -3,19 +3,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import Auth from "../Routes/Auth";
 import Feed from "../Routes/Feed";
-import Explore from "../Routes/Explore";
 import Profile from "../Routes/Profile";
 import Search from "../Routes/Search";
+import Post from "../Routes/Post"
 import EditProfile from "../Routes/EditProfile";
 
 const LoggedInRoutes = () => {
     return (
         <Switch>
             <Route path="/search" component={Search}/>
-            <Route path="/explore" component={Explore}/>
-            <Route path="/accounts/edit" component={EditProfile}/>
-            <Route path="/:username" component={Profile}/>
-            <Route path="/" component={Feed}/>
+            <Route exact path="/accounts/edit" component={EditProfile}/>
+            <Route exact path="/:username" component={Profile}/>
+            <Route exact path="/post/:id" component={Post}/>
+            <Route exact path="/" component={Feed}/>
             <Redirect from="*" to="/"/>
         </Switch>
     );
