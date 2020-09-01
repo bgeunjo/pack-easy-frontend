@@ -7,6 +7,7 @@ import Post from "../Components/Post"
 import {SEE_FEED} from "../Components/Queries"
 
 const Wrapper = styled.div`
+    width : 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
