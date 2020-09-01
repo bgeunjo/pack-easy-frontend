@@ -3,12 +3,12 @@ import styled from "styled-components";
 import TextareaAutosize from "react-autosize-textarea";
 import FatText from "../FatText";
 import {Link} from "react-router-dom"
-import { FullHeart,EmptyHeart, Comment as CommentIcon} from "../Icons";
+import { FullHeart,EmptyHeart, Comment as CommentIcon, Calendar} from "../Icons";
 
 const Post = styled.div`
     ${props=>props.theme.whiteBox};
     width: 100%;
-    max-width:600px;
+    max-width: ${props.theme.maxWidth};
     margin-bottom:25px;
     user-select: none;
     a {
@@ -173,7 +173,10 @@ export default ({
             </Comments>
         )
     }
-    <Timestamp>{createdAt}</Timestamp>
+    <Timestamp>
+        <Calendar/>
+        {createdAt}
+        </Timestamp>
     <Textarea 
         placeholder={"댓글 달기..."}
         value = {newComment.value}
