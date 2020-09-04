@@ -13,6 +13,8 @@ export default createGlobalStyle`
     body {
         background-color: ${props => props.theme.bgColor};
         color: ${props => props.theme.blackColor};
+        font-size: 14px;
+        font-family: 'Open Sans', sans-serif;
         padding-top:140px;
     }
     a{
