@@ -10,7 +10,7 @@ const Container = styled.input`
     background-color: ${props=> props.theme.bgColor};
     height:35px;
     font-size:12px;
-    padding: 0px 15px;
+    padding: 5px 15px;
 `;
 
 

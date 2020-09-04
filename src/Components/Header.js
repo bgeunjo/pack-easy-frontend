@@ -46,8 +46,10 @@ const HeaderColumn = styled.div`
 
 const SearchInput = styled(Input)`
     background-color: ${props=>props.theme.bgColor};
-    padding: 5px;
+    border: ${props=> props.theme.boxBorder};
     font-size: 14px;
+    margin-bottom: 0;
+    margin-right: 0;
     border-radius: 3px;
     height: auto;
     text-align: center;
@@ -56,6 +58,12 @@ const SearchInput = styled(Input)`
         opacity: 0.8;
         font-weight: 200;
     }
+`;
+const Form = styled.form`
+    padding: 0;
+    border: none;
+    border-width: 0;
+    margin-bottom: 0;
 `;
 
 const HeaderLink=styled(Link)`
@@ -86,13 +94,13 @@ export default withRouter(({history})=>{
                     </Link>
                 </HeaderColumn>
                 <HeaderColumn>
-                    <form onSubmit={onSearchSubmit}>
+                    <Form onSubmit={onSearchSubmit}>
                         <SearchInput 
                             value={search.value} 
                             onChange={search.onChange}
                             placeholder="검색"
                         />
-                    </form>
+                    </Form>
                 </HeaderColumn>
                 <HeaderColumn>
                         {!loading &&  data && data.seeMyProfile ? (

@@ -10,6 +10,9 @@ export default createGlobalStyle`
     * {
         box-sizing:border-box;
     }
+    h1 {
+        font-size: 90px;
+    }
     body {
         background-color: ${props => props.theme.bgColor};
         color: ${props => props.theme.blackColor};

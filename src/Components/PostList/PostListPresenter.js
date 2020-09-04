@@ -8,6 +8,7 @@ import { FullHeart,EmptyHeart, Comment as CommentIcon, Calendar as CalendarIcon,
 const Post = styled.div`
     ${props=>props.theme.whiteBox};
     width: 100%;
+    color: ${props=>props.theme.blackColor};
     max-width: ${props=>props.theme.maxWidth};
     margin-bottom:25px;
     user-select: none;

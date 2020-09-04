@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Loader from "../../Components/Loader"
 import TextareaAutosize from "react-autosize-textarea";
-import FatText from "../../Components/FatText"
-import {Link} from "react-router-dom"
+import FatText from "../../Components/FatText";
+import Helmet from "react-helmet";
+import MarkdownContainer from "../../Components/Markdown"
+import {Link} from "react-router-dom";
+import "./index.scss"
 import { FullHeart,EmptyHeart, Comment as CommentIcon, Calendar as CalendarIcon, FullUser as FullUserIcon} from "../../Components/Icons";
 
 
@@ -11,7 +14,6 @@ const Wrapper = styled.div`
     min-height: 100vh;
     width:100%;
 `;
-
 
 const Post = styled.div`
     ${props=>props.theme.whiteBox};
@@ -154,61 +156,11 @@ export default ({loading,data}) => {
             }
         } = data;
         return (
-        <Post>
-        <Header>
-            <Title>
-                <FatText text={title}/>
-            </Title>
-            <Timestamp>
-                <Calendar/>
-                <FatText text={createdAt.slice(0,10)+" /"}/>
-                <FullUser/>
-                <FatText text={user.username}/>
-            </Timestamp>
-        </Header>
-    
-    {/*<Files>
-        {files && files.map((file,index) => <File key={file.id} src={file.url} showing={index===currentItem}/>)}
-    </Files>*/}
-    <Meta>
-    <Content>
-        {content}
-    </Content>
-    {/*<Buttons>
-        <Button onClick={toggleLike}>
-            {isLiked ? <FullHeart/> : <EmptyHeart/>}
-        </Button>
-        <Button>
-            <CommentIcon/>
-    </Button>
-    </Buttons>
-    <FatText text={`좋아요 ${likeCount} 개`}/>
-    {
-        comments && (
-            <Comments>
-                {comments.map(comment => (
-                    <Comment key={comment.id}>
-                        <FatText text={comment.user.username}/>
-                        {comment.text}
-                    </Comment>
-                ))}
-                {selfComments.map(comment => (
-                    <Comment key={comment.id}>
-                        <FatText text={comment.user.username}/>
-                        {comment.text}
-                    </Comment>
-                ))}
-            </Comments>
-        )
-    }
-    <Textarea 
-        placeholder={"댓글 달기..."}
-        value = {newComment.value}
-        onChange={newComment.onChange}
-        onKeyPress={onKeyPress}
-/>*/}
-    </Meta>
-</Post>
+            <>
+            <Helmet>
+            </Helmet>
+            <MarkdownContainer/>
+            </>
         )
     }
     return null;
