@@ -35,7 +35,7 @@ Nmap done: 1 IP address (1 host up) scanned in 20.38 seconds
 
 돌아다녀봐도 admin 이메일만 나와있고 딱히 없다.
 
-Burp Suite로 요청을 보내보며 sitemap을 그려보면 로그인과 관련한 페이지가 있다. :rocket: Let's go
+Burp Suite로 요청을 보내보며 sitemap을 그려보면 로그인과 관련한 페이지가 있다. 🚀 Let's go
 
 저번 문제에서 얻었던 admin / MEGACORP_4dm1n!! 으로 로그인된다. 로그인하면 Accounts 탭에서 계정정보를 볼 수 있다
 
@@ -127,7 +127,7 @@ uid=1000(robert) gid=1000(robert) groups=1000(robert),1001(bugtracker)
 
 ---
 
-:rocket: ​https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
+ 🚀https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
 
 권한 상승을 시도할 때 쓸만한 게 많은 것 같다.
 
