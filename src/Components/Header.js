@@ -5,7 +5,7 @@ import { useQuery } from "react-apollo-hooks";
 import {MY_PROFILE} from "./Queries"
 import Input from "./Input";
 import useInput from "../Hooks/useInput"
-import { Compass, EmptyHeart,User, Logo } from "./Icons";
+import { Compass, EmptyHeart,User, Logo,Writer } from "./Icons";
 
 const Header = styled.header`
     width: 100%;
@@ -104,9 +104,14 @@ export default withRouter(({history})=>{
                 </HeaderColumn>
                 <HeaderColumn>
                         {!loading &&  data && data.seeMyProfile ? (
+                            <>
+                            <HeaderLink to="/upload" replace>
+                                <Writer/>
+                            </HeaderLink>
                             <HeaderLink to={data.seeMyProfile.username} replace>
                                 <User/>
-                            </HeaderLink>) : (
+                            </HeaderLink>
+                            </>) : (
                             <HeaderLink to="/#">
                                 <User/>
                             </HeaderLink>

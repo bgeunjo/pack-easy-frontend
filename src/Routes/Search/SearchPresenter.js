@@ -7,6 +7,7 @@ import UserCard from "../../Components/UserCard"
 import SearchedPost from "../../Components/SearchedPost"
 
 const Wrapper = styled.div`
+    ${props=>props.theme.Wrapper}
     height: 70vh;
     text-align: center;
 `;

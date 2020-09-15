@@ -7,6 +7,7 @@ import PostList from "../Components/PostList"
 import {SEE_FEED} from "../Components/Queries"
 
 const Wrapper = styled.div`
+    ${props=>props.theme.Wrapper}
     display: flex;
     flex-direction: column;
     align-items: center;

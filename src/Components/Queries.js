@@ -147,6 +147,34 @@ export const EDIT_USER= gql`
     }
 `;
 
+export const UPLOAD=gql`
+    mutation upload(
+        $title: String!
+        $content: String!
+        $files: [String]
+    ){
+        upload(
+            title: $title
+            content: $content
+            files: $files
+        ){
+            id
+            title
+            content
+            files
+            user{
+                id
+                username
+            }
+            createdAt
+            updatedAt
+        }
+    }
+
+`
+
+
+
 export const SEE_FULL_POST= gql`
     query seeFullPost($id: String!){
         seeFullPost(id:$id){

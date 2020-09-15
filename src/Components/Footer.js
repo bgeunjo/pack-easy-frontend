@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+const Wrapper=styled.div`
+    ${props=>props.theme.Wrapper}
+`
+
 const Footer = styled.footer`
     display: flex;
     justify-content: space-between;
@@ -28,9 +32,11 @@ const Copyright = styled.span`
 `;
 
 export default () => (
+    <Wrapper>
     <Footer>
         <Copyright>
             &copy; {new Date().getFullYear()} CANTBEGOSU
         </Copyright>
     </Footer>
+    </Wrapper>
 );

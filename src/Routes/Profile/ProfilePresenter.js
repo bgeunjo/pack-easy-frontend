@@ -11,8 +11,8 @@ import { Setting } from "../../Components/Icons";
 
 
 const Wrapper = styled.div`
+    ${props=>props.theme.Wrapper}
     min-height: 100vh;
-    width:100%;
 `;
 
 const Settings= styled(Setting)`

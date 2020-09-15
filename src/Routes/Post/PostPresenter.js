@@ -12,7 +12,7 @@ import { FullHeart,EmptyHeart, Comment as CommentIcon, Calendar as CalendarIcon,
 
 const Wrapper = styled.div`
     min-height: 100vh;
-    width:100%;
+    ${props=>props.theme.Wrapper}
 `;
 
 const Post = styled.div`
@@ -156,11 +156,9 @@ export default ({loading,data}) => {
             }
         } = data;
         return (
-            <>
-            <Helmet>
-            </Helmet>
-            <MarkdownContainer/>
-            </>
+            <Wrapper>
+                {data}
+            </Wrapper>
         )
     }
     return null;

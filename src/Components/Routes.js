@@ -6,12 +6,14 @@ import Feed from "../Routes/Feed";
 import Profile from "../Routes/Profile";
 import Search from "../Routes/Search";
 import Post from "../Routes/Post"
+import Upload from "../Routes/Upload"
 import EditProfile from "../Routes/EditProfile";
 
 const LoggedInRoutes = () => {
     return (
         <Switch>
             <Route path="/search" component={Search}/>
+            <Route path="/upload" component={Upload}/>
             <Route exact path="/accounts/edit" component={EditProfile}/>
             <Route exact path="/:username" component={Profile}/>
             <Route exact path="/post/:id" component={Post}/>
