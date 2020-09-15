@@ -127,9 +127,6 @@ export default ({loading,data,logOut}) => {
                 </title>
             </Helmet>
                 <Header>
-                    <HeaderColumn>
-                        {!isSelf && <FollowButton id={id} isFollowing={isFollowing}/>}
-                    </HeaderColumn>
                     <HeaderInfo>
                         <HeaderRow>
                             <Username>{username}</Username>

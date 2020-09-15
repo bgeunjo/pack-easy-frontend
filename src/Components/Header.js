@@ -108,7 +108,7 @@ export default withRouter(({history})=>{
                             <HeaderLink to="/upload" replace>
                                 <Writer/>
                             </HeaderLink>
-                            <HeaderLink to={data.seeMyProfile.username} replace>
+                            <HeaderLink to={`/`+data.seeMyProfile.username} replace>
                                 <User/>
                             </HeaderLink>
                             </>) : (
