@@ -18,6 +18,7 @@ const Wrapper = styled.div`
 const Settings= styled(Setting)`
     margin-left: 15px;
 `;
+
 const Header = styled.div`
     display: flex;
     align-items: stretch;
@@ -45,6 +46,10 @@ const HeaderRow =styled.div`
     margin-bottom:20px;
 `
 
+const FButton = styled(FollowButton)`
+    margin-left: 10px;
+    width: 100px;
+`
 
 const Username = styled.h2`
     display: block;
@@ -127,6 +132,8 @@ export default ({loading,data,logOut}) => {
                 </title>
             </Helmet>
                 <Header>
+                    <HeaderColumn>
+                    </HeaderColumn>
                     <HeaderInfo>
                         <HeaderRow>
                             <Username>{username}</Username>
@@ -138,7 +145,7 @@ export default ({loading,data,logOut}) => {
                                 </Link>
                                 </>
                             ) : (
-                                <FollowButton isFollowing={isFollowing} id={id}/>
+                                <FButton isFollowing={isFollowing} id={id}/>
                             )}
                         </HeaderRow>
                         <Counts>

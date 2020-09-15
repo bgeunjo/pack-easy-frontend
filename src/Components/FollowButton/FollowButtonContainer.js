@@ -4,7 +4,7 @@ import { FOLLOW, UNFOLLOW } from "../Queries"
 import { useMutation } from "react-apollo-hooks";
 import FollowButtonPresenter from "./FollowButtonPresenter";
 
-const FollowButtonContainer = ({isFollowing, id}) => {
+const FollowButtonContainer = ({isFollowing, id,className}) => {
     const context = {
         headers:{
             Authorization : `Bearer ${localStorage.getItem("token")}`
@@ -29,7 +29,7 @@ const FollowButtonContainer = ({isFollowing, id}) => {
             followMutation();
         }
     }
-    return <FollowButtonPresenter onClick={onClick} isFollowing={isFollowingS}/>
+    return <FollowButtonPresenter onClick={onClick} isFollowing={isFollowingS} className={className}/>
 }
 
 FollowButtonContainer.propTypes = {
