@@ -1,7 +1,7 @@
 import React from "react";
 import {useMutation} from "react-apollo-hooks"
 import {UPLOAD} from "../../Components/Queries"
-import EditCode from "../../Components/EditCode/EditCode"
+//import EditCode from "../../Components/EditCode/EditCode"
 import Preview from "../../Components/Preview"
 import styled from "styled-components"
 
@@ -31,7 +31,7 @@ export default() => {
     });
     return (
         <Wrapper>
-            <EditCode/>
+
             <Preview/>
         </Wrapper>
         );
