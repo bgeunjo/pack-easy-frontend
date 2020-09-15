@@ -163,7 +163,7 @@ export default ({
     </Files>*/}
     <Meta>
     <Content>
-        {content}
+        {content.slice(0,10)}
     </Content>
     {/*<Buttons>
         <Button onClick={toggleLike}>
