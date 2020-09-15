@@ -157,16 +157,18 @@ export default ({loading,data,logOut}) => {
                         <Bio>{" "}{bio}</Bio>
                     </HeaderInfo>
                 </Header>
-                <Post>
-                    {posts && posts.map(post => (
-                        <SearchedPost
-                            key={post.id}
-                            likeCount={post.likeCount}
-                            commentCount={post.commentCount}
-                            file={post.files[0]}
-                        />
-                    ))}
-                </Post>
+                    <Post>
+                        {posts && posts.map(post => (
+                            <SearchedPost
+                                key={post.id}
+                                id={post.id}
+                                likeCount={post.likeCount}
+                                commentCount={post.commentCount}
+                                file={post.files[0]}
+                            />
+                        ))}
+                    </Post>
+                
             </Wrapper>
         )
     }

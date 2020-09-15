@@ -1,8 +1,13 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { FullHeart,FullComment } from "./Icons";
 
+const PostLink= styled(Link)`
+    display: block;
+    height: 100%;
+`;
 
 const Overlay = styled.div`
 background-color: rgba(0,0,0,0.6);
@@ -19,6 +24,7 @@ svg{
 `;
 const Container = styled.div`
     background-image: url(${props=>props.bg});
+    height: 100%;
     background-size: cover;
     cursor: pointer;
     &:hover {
@@ -43,19 +49,22 @@ const NumberText= styled.span`
 `;
 
 
-const SearchedPost= ({likeCount,commentCount, file}) => (
-    <Container bg={file.url}>
-        <Overlay>
-            <Number>
-                <FullHeart/>
-                <NumberText>{likeCount}</NumberText>
-            </Number>
-            <Number>
-                <FullComment/>
-                <NumberText>{commentCount}</NumberText>
-            </Number>
-        </Overlay>
-    </Container>
+const SearchedPost= ({id,likeCount,commentCount, file}) => (
+    <PostLink to={`/post/`+id}>
+        <Container bg={file.url}>
+            <Overlay>
+                <Number>
+                    <FullHeart/>
+                    <NumberText>{likeCount}</NumberText>
+                </Number>
+                <Number>
+                    <FullComment/>
+                    <NumberText>{commentCount}</NumberText>
+                </Number>
+            </Overlay>
+        </Container>
+    </PostLink>
+    
 );
 
 SearchedPost.propTypes={

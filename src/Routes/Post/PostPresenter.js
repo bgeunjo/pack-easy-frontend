@@ -157,7 +157,7 @@ export default ({loading,data}) => {
         } = data;
         return (
             <Wrapper>
-                {data.content}
+                {data.seeFullPost.content}
             </Wrapper>
         )
     }
